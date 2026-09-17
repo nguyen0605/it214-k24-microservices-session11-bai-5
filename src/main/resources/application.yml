@@ -1,0 +1,20 @@
+server:
+  port: 8083
+
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: notification-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+app:
+  kafka:
+    topic:
+      main: storex-order-events
+      dlq: storex-order-events.DLQ
+  external:
+    preference-api: http://localhost:8081
+    notify-api: http://localhost:8082
